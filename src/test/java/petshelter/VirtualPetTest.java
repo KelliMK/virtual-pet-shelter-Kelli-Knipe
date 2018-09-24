@@ -72,31 +72,9 @@ public class VirtualPetTest {
 	}
 	
 	@Test
-	public void shouldBeCowMetabolism() {
-		// Arrange
-		VirtualPet underTest = new VirtualPet("Rose", "blah blah blah", 1, 20, 15);
-		// act
-		int aMetabolism = underTest.cowMetabolism;
-		//assert
-		Assert.assertEquals(1, aMetabolism);
-	}
-	
-	@Test
-	public void shouldNotBeCowMetabolism() {
-		// Arrange
-		VirtualPet underTest = new VirtualPet("Rose", "blah blah blah", 1, 20, 15);
-		// act
-		int aMetabolism = underTest.cowMetabolism;
-		// boolean shouldBeFalse = (aMetabolism == 5);
-		// assert
-		// Assert.assertFalse("", shouldBeFalse);
-		assertThat(aMetabolism,is(not(5)));
-	}
-	
-	@Test
 	public void shouldBeCowHunger() {
 		// Arrange
-		VirtualPet underTest = new VirtualPet("Rose", "blah blah blah", 1, 20, 15);
+		VirtualPet underTest = new VirtualPet("Rose", "blah blah blah", 20, 15);
 		// act
 		int anHunger = underTest.cowHunger;
 		// assert
@@ -106,7 +84,7 @@ public class VirtualPetTest {
 	@Test
 	public void shouldNotBeCowHunger() {
 		// Arrange
-		VirtualPet underTest = new VirtualPet("Rose", "blah blah blah", 1, 20, 15);
+		VirtualPet underTest = new VirtualPet("Rose", "blah blah blah", 20, 15);
 		// act
 		int anHunger = underTest.cowHunger;
 		// assert
@@ -116,7 +94,7 @@ public class VirtualPetTest {
 	@Test
 	public void shouldBeCowThirst() {
 		// Arrange
-		VirtualPet underTest = new VirtualPet("Rose", "blah blah blah", 1, 20, 15);
+		VirtualPet underTest = new VirtualPet("Rose", "blah blah blah", 20, 15);
 		// act
 		int aThirst = underTest.cowThirst;
 		// assert
@@ -126,7 +104,7 @@ public class VirtualPetTest {
 	@Test
 	public void shouldNotBeCowThirst() {
 		// Arrange
-		VirtualPet underTest = new VirtualPet("Rose", "blah blah blah", 1, 20, 15);
+		VirtualPet underTest = new VirtualPet("Rose", "blah blah blah", 20, 15);
 		// act
 		int aMetabolism = underTest.cowThirst;
 		// assert
@@ -136,7 +114,7 @@ public class VirtualPetTest {
 	@Test
 	public void shouldBeAcceptableMood() {
 		// arrange
-		VirtualPet underTest = new VirtualPet("Rose", "blah blah blah", 1, 20, 15);
+		VirtualPet underTest = new VirtualPet("Rose", "blah blah blah", 20, 15);
 		// act
 		boolean balls = underTest.calculateMood();
 		// assert
@@ -147,12 +125,241 @@ public class VirtualPetTest {
 	@Test
 	public void shouldNotBeAcceptableMood() {
 		// arrange
-		VirtualPet underTest = new VirtualPet("Rose", "blah blah blah", 1, 200000000, 15);
+		VirtualPet underTest = new VirtualPet("Rose", "blah blah blah", 20000000, 15);
 		// act
 		boolean balls = underTest.calculateMood();
 		// assert
 		// Assert.assertFalse("", balls);
 		assertThat(balls,is(false));
+	}
+	
+	@Test
+	public void shouldBeAffectionate() {
+		// arrange
+		VirtualPet underTest = new VirtualPet("Rose", "blah blah blah", 0, 15);
+		// act
+		underTest.calculateMood();
+		boolean balls = underTest.affectionateGraphic();
+		// assert
+		// Assert.assertFalse("", balls);
+		assertThat(balls,is(true));
+	}
+	
+	@Test
+	public void shouldNotBeAffectionate() {
+		// arrange
+		VirtualPet underTest = new VirtualPet("Rose", "blah blah blah", 20000000, 15);
+		// act
+		underTest.calculateMood();
+		boolean balls = underTest.affectionateGraphic();
+		// assert
+		// Assert.assertFalse("", balls);
+		assertThat(balls,is(false));
+	}
+	
+	@Test
+	public void shouldBeAngry() {
+		// arrange
+		VirtualPet underTest = new VirtualPet("Rose", "blah blah blah", 80, 100);
+		// act
+		underTest.calculateMood();
+		boolean balls = underTest.angryGraphic();
+		// assert
+		// Assert.assertFalse("", balls);
+		assertThat(balls,is(true));
+	}
+	
+	@Test
+	public void shouldNotBeAngry() {
+		// arrange
+		VirtualPet underTest = new VirtualPet("Rose", "blah blah blah", 20000000, 15);
+		// act
+		underTest.calculateMood();
+		boolean balls = underTest.angryGraphic();
+		// assert
+		// Assert.assertFalse("", balls);
+		assertThat(balls,is(false));
+	}
+	
+	@Test
+	public void shouldBeAsleep() {
+		// tests asleepGraphic(), not tick()
+		// arrange
+		VirtualPet underTest = new VirtualPet("Rose", "blah blah blah", 80, 100);
+		// act
+		underTest.cowAwake = false;
+		boolean balls = underTest.asleepGraphic();
+		// assert
+		// Assert.assertFalse("", balls);
+		assertThat(balls,is(true));
+	}
+	
+	@Test
+	public void shouldNotBeAsleep() {
+		// tests asleepGraphic(), not tick()
+		// arrange
+		VirtualPet underTest = new VirtualPet("Rose", "blah blah blah", 20000000, 15);
+		// act
+		underTest.cowAwake = true;
+		boolean balls = underTest.asleepGraphic();
+		// assert
+		// Assert.assertFalse("", balls);
+		assertThat(balls,is(false));
+	}
+	
+	@Test
+	public void shouldMakeMilk() {
+		// arrange
+		VirtualPet underTest = new VirtualPet("Rose", "blah blah blah", 80, 100);
+		// act
+		underTest.cowMilk = 10;
+		boolean balls = underTest.milkCow();
+		// assert
+		// Assert.assertFalse("", balls);
+		assertThat(balls,is(true));
+	}
+	
+	@Test
+	public void shouldNotMakeMilk() {
+		// arrange
+		VirtualPet underTest = new VirtualPet("Rose", "blah blah blah", 20000000, 15);
+		// act
+		underTest.cowMilk = 0;
+		boolean balls = underTest.milkCow();
+		// assert
+		// Assert.assertFalse("", balls);
+		assertThat(balls,is(false));
+	}
+	
+	@Test
+	public void shouldBeNormal() {
+		// arrange
+		VirtualPet underTest = new VirtualPet("Rose", "blah blah blah", 100, 0);
+		// act
+		underTest.calculateMood();
+		boolean balls = underTest.normalGraphic();
+		// assert
+		// Assert.assertFalse("", balls);
+		assertThat(balls,is(true));
+	}
+	
+	@Test
+	public void shouldNotBeNormal() {
+		// arrange
+		VirtualPet underTest = new VirtualPet("Rose", "blah blah blah", 0, 0);
+		// act
+		underTest.calculateMood();
+		boolean balls = underTest.normalGraphic();
+		// assert
+		// Assert.assertFalse("", balls);
+		assertThat(balls,is(false));
+	}
+	
+	@Test
+	public void shouldPlay() {
+		// arrange
+		VirtualPet underTest = new VirtualPet("Rose", "blah blah blah", 80, 100);
+		// act
+		underTest.cowBoredom = 5;
+		underTest.cowTired = 0;
+		boolean balls = underTest.playCow();
+		// assert
+		// Assert.assertFalse("", balls);
+		assertThat(balls,is(true));
+	}
+	
+	@Test
+	public void tooTiredToPlay() {
+		// arrange
+		VirtualPet underTest = new VirtualPet("Rose", "blah blah blah", 20000000, 15);
+		// act
+		underTest.cowBoredom = 5;
+		underTest.cowTired = 2;
+		boolean balls = underTest.playCow();
+		// assert
+		// Assert.assertFalse("", balls);
+		assertThat(balls,is(false));
+	}
+	
+	@Test
+	public void tooContentToPlay() {
+		// arrange
+		VirtualPet underTest = new VirtualPet("Rose", "blah blah blah", 20000000, 15);
+		// act
+		underTest.cowBoredom = 0;
+		underTest.cowTired = 0;
+		boolean balls = underTest.playCow();
+		// assert
+		// Assert.assertFalse("", balls);
+		assertThat(balls,is(false));
+	}
+	
+	@Test
+	public void shouldBeSad() {
+		// arrange
+		VirtualPet underTest = new VirtualPet("Rose", "blah blah blah", 100, 40);
+		// act
+		underTest.calculateMood();
+		boolean balls = underTest.sadGraphic();
+		// assert
+		// Assert.assertFalse("", balls);
+		assertThat(balls,is(true));
+	}
+	
+	@Test
+	public void shouldNotBeSad() {
+		// arrange
+		VirtualPet underTest = new VirtualPet("Rose", "blah blah blah", 10, 40);
+		// act
+		underTest.calculateMood();
+		boolean foo = underTest.sadGraphic();
+		// assert
+		// Assert.assertFalse("", balls);
+		assertThat(foo,is(false));
+	}
+	
+	@Test
+	public void shouldBeAwake() {
+		// tests tick(), not asleepGraphic()
+		// arrange
+		VirtualPet underTest = new VirtualPet("Rose", "blah blah blah", 10, 40);
+		// act
+		for (underTest.currentTurn = 0; underTest.currentTurn < 8; underTest.currentTurn++) {
+			underTest.tick();
+			boolean foo = underTest.cowAwake;
+			// assert
+			// Assert.assertTrue("", balls);
+			assertThat(foo,is(true));
+		}
+	}
+	
+	@Test
+	public void shouldNotBeAwake() {
+		// tests tick(), not asleepGraphic()
+		// arrange
+		VirtualPet underTest = new VirtualPet("Rose", "blah blah blah", 10, 40);
+		boolean foo = underTest.cowAwake;
+		underTest.currentTurn = 8;
+		// act
+		for (underTest.currentTurn = 8; underTest.currentTurn < 10; ++underTest.currentTurn) {
+			underTest.tick();
+			foo = underTest.cowAwake;
+			
+			// assert
+			// Assert.assertFalse("", foo);
+			assertThat(foo,is(false));
+		}
+	}
+	
+	@Test
+	public void turnLimitSurpassed() {
+		// arrange
+		VirtualPet underTest = new VirtualPet("Rose", "blah");
+		underTest.currentTurn = 11;
+		// act
+		boolean foo = underTest.tick();
+		// assert
+		assertThat(foo,is(false));
 	}
 }
 
